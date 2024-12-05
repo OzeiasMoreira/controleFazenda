@@ -27,11 +27,11 @@
       <Line endX="491.99993896484375" layoutX="108.0" layoutY="274.0" startX="-108.00000762939453" strokeWidth="3.0" />
       <Line endX="9.499961853027344" endY="52.999996185302734" layoutX="101.0" layoutY="-53.0" startX="9.499961853027344" startY="453.0" />
       <Button layoutX="187.0" layoutY="50.0" mnemonicParsing="false" onAction="#vacas" text="Cadastrar" />
-      <Button layoutX="300.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Alterar" />
-      <Button layoutX="404.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Excluir" />
+      <Button layoutX="300.0" layoutY="50.0" mnemonicParsing="false" onAction="#alterarVaca" prefHeight="25.0" prefWidth="66.0" text="Alterar" />
+      <Button layoutX="404.0" layoutY="50.0" mnemonicParsing="false" onAction="#excluirVaca" prefHeight="25.0" prefWidth="66.0" text="Excluir" />
       <Button layoutX="189.0" layoutY="187.0" mnemonicParsing="false" onAction="#usuario" text="Cadastar" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" />
-      <Button layoutX="302.0" layoutY="190.0" mnemonicParsing="false" onAction="#alterar" prefHeight="25.0" prefWidth="62.0" text="Alterar" />
-      <Button layoutX="406.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Excluir" />
+      <Button layoutX="302.0" layoutY="190.0" mnemonicParsing="false" onAction="#alterarUser" prefHeight="25.0" prefWidth="62.0" text="Alterar" />
+      <Button layoutX="406.0" layoutY="190.0" mnemonicParsing="false" onAction="#excluirUser" prefHeight="25.0" prefWidth="62.0" text="Excluir" />
       <Button layoutX="189.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Incluir" />
       <Button layoutX="285.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Listar - Período" />
       <Button layoutX="430.0" layoutY="331.0" mnemonicParsing="false" text="Listar - Vaca" />

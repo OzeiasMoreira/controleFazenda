@@ -13,30 +13,45 @@ import javafx.fxml.FXML;
  * @author Ozeias
  */
 public class MenuControle {
-    
+
     @FXML
-    private void vacas() throws IOException{
+    private void vacas() throws IOException {
         App.setRoot("telaVaca");
     }
-    
+
     @FXML
-    private void usuario() throws IOException{
+    private void usuario() throws IOException {
         App.setRoot("telaUsuario");
     }
-    
+
     @FXML
-    private void sair(){
-        
+    private void sair() {
+
     }
-    
+
     @FXML
-    private void producao() throws IOException{
+    private void producao() throws IOException {
         App.setRoot("telaProducao");
     }
-    
+
     @FXML
-    private void alterar() throws IOException{
-        App.setRoot("alterarUsuario");  
+    private void alterarUser() throws IOException {
+        App.setRoot("alterarUsuario");
     }
-    
+
+    @FXML
+    private void alterarVaca() throws IOException {
+        App.setRoot("alterarVaca");
+    }
+
+    @FXML
+    private void excluirUser() throws IOException {
+        App.setRoot("excluirUsuario");
+    }
+
+    @FXML
+    private void excluirVaca() throws IOException {
+        App.setRoot("excluirVaca");
+    }
+
 }

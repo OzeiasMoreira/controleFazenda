@@ -4,56 +4,53 @@
  */
 package com;
 
-import com.controlefazenda.modelo.Usuario;
+import com.controlefazenda.modelo.Vaca;
 import com.controlefazenda.util.Dao;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 /**
  *
  * @author Ozeias
  */
-public class AlterarUserControle {
+public class AlterarVacaControle {
+    @FXML
+    private TextField campoNome;
     
     @FXML
-    TextField campoLogin;
+    private TextField campoBrinco;
     
     @FXML
-    TextField campoNome;
-    
-    @FXML
-    PasswordField campoSenha;
+    private TextField campoRaca;
     
     @FXML
     private ComboBox<String> listar;
     
-    @FXML
     private void initialize(){
-        Dao<Usuario> dao = new Dao<Usuario>(Usuario.class);
+        Dao<Vaca> dao = new Dao(Vaca.class);
         ArrayList<String> listaT = new ArrayList<>();
-        for(Usuario user : dao.listarTodos()){
-            listaT.add(user.getNome());
+        for (Vaca v : dao.listarTodos()){
+            listaT.add(v.getBrinco());
         }
         
         listar.getItems().setAll(listaT);
     }
     
-    public void alterar(){
-        if(campoLogin.getText().isEmpty() || campoSenha.getText().isEmpty() || listar.getValue() == null){
+        public void alterar(){
+        if(campoBrinco.getText().isEmpty() || campoRaca.getText().isEmpty() || listar.getValue() == null){
             mostrarErro("Preencha os campos obrigatórios");
             return;
         } 
         
-        Dao<Usuario> dao = new Dao(Usuario.class);
-        Usuario user = new Usuario(campoLogin.getText(),campoNome.getText(), campoSenha.getText());
-        dao.alterar("campoNome", listar.getValue(),user);
+        Dao<Vaca> dao = new Dao(Vaca.class);
+        Vaca v = new Vaca(campoNome.getText(),campoBrinco.getText(), campoRaca.getText());
+        dao.alterar("campoBrinco", listar.getValue(),v);
         limparCampos();
-        mostrarSucesso("Usuario alterado com sucesso!");
+        mostrarSucesso("Vaca alterada com sucesso!");
     }
     
     public void voltar() throws IOException{
@@ -75,9 +72,9 @@ public class AlterarUserControle {
     }
 
     private void limparCampos(){
-        this.campoLogin.setText("");
         this.campoNome.setText("");
-        this.campoSenha.setText("");
+        this.campoBrinco.setText("");
+        this.campoRaca.setText("");
        
     }
 }

@@ -5,6 +5,7 @@
 package com;
 
 import com.controlefazenda.modelo.Usuario;
+import com.controlefazenda.modelo.Vaca;
 import com.controlefazenda.util.Dao;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,66 +19,66 @@ import javafx.scene.control.TextField;
  *
  * @author Ozeias
  */
-public class AlterarUserControle {
-    
+public class ExcluirVacasControlador {
+
     @FXML
-    TextField campoLogin;
-    
+    private TextField campoNome;
+
     @FXML
-    TextField campoNome;
-    
+    private TextField campoBrinco;
+
     @FXML
-    PasswordField campoSenha;
-    
+    private TextField campoRaca;
+
     @FXML
     private ComboBox<String> listar;
-    
+
     @FXML
-    private void initialize(){
-        Dao<Usuario> dao = new Dao<Usuario>(Usuario.class);
+    private void initialize() {
+        Dao<Vaca> dao = new Dao<Vaca>(Vaca.class);
         ArrayList<String> listaT = new ArrayList<>();
-        for(Usuario user : dao.listarTodos()){
-            listaT.add(user.getNome());
+        for (Vaca v : dao.listarTodos()) {
+            listaT.add(v.getNome());
         }
-        
+
         listar.getItems().setAll(listaT);
     }
-    
-    public void alterar(){
-        if(campoLogin.getText().isEmpty() || campoSenha.getText().isEmpty() || listar.getValue() == null){
-            mostrarErro("Preencha os campos obrigatórios");
+
+    @FXML
+    public void excluir() {
+        if (listar.getValue() == null) {
+            mostrarErro("preencha os campos obrigatórios!");
             return;
-        } 
-        
-        Dao<Usuario> dao = new Dao(Usuario.class);
-        Usuario user = new Usuario(campoLogin.getText(),campoNome.getText(), campoSenha.getText());
-        dao.alterar("campoNome", listar.getValue(),user);
-        limparCampos();
-        mostrarSucesso("Usuario alterado com sucesso!");
+        }
+
+        Dao<Usuario> dao = new Dao(Vaca.class);
+        dao.excluir("campoBrinco", listar.getValue());
+        mostrarSucesso("Vaca excluída com sucesso!");
+        listar.setValue(null);
     }
-    
-    public void voltar() throws IOException{
+
+    public void voltar() throws IOException {
         App.setRoot("menu");
     }
-    
-    private void mostrarErro(String mensagem){
+
+    private void mostrarErro(String mensagem) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
         alert.show();
     }
 
-    private void mostrarSucesso(String mensagem){
+    private void mostrarSucesso(String mensagem) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
         alert.show();
     }
 
-    private void limparCampos(){
-        this.campoLogin.setText("");
+    private void limparCampos() {
+        this.campoRaca.setText("");
         this.campoNome.setText("");
-        this.campoSenha.setText("");
-       
+        this.campoBrinco.setText("");
+
     }
 }

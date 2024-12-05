@@ -3,8 +3,11 @@ com\controlefazenda\util\Dao.class
 com\controlefazenda\modelo\Vaca.class
 com\App.class
 com\controlefazenda\modelo\Producao.class
+com\ExcluirVacasControlador.class
 com\ProducaoControle.class
+com\ExcluirUserControlador.class
 com\UsuarioControle.class
+com\AlterarVacaControle.class
 com\controlefazenda\modelo\Usuario.class
 com\VacaControle.class
 com\MenuControle.class

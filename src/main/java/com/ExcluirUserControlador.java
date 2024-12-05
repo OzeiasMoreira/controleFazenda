@@ -18,66 +18,66 @@ import javafx.scene.control.TextField;
  *
  * @author Ozeias
  */
-public class AlterarUserControle {
-    
+public class ExcluirUserControlador {
+
     @FXML
-    TextField campoLogin;
-    
+    private TextField campoNome;
+
     @FXML
-    TextField campoNome;
-    
+    private TextField campoLogin;
+
     @FXML
-    PasswordField campoSenha;
-    
+    private PasswordField campoSenha;
+
     @FXML
     private ComboBox<String> listar;
-    
+
     @FXML
-    private void initialize(){
+    private void initialize() {
         Dao<Usuario> dao = new Dao<Usuario>(Usuario.class);
         ArrayList<String> listaT = new ArrayList<>();
-        for(Usuario user : dao.listarTodos()){
+        for (Usuario user : dao.listarTodos()) {
             listaT.add(user.getNome());
         }
-        
+
         listar.getItems().setAll(listaT);
     }
-    
-    public void alterar(){
-        if(campoLogin.getText().isEmpty() || campoSenha.getText().isEmpty() || listar.getValue() == null){
-            mostrarErro("Preencha os campos obrigatórios");
+
+    @FXML
+    public void excluir() {
+        if(listar.getValue() == null){
+            mostrarErro("preencha os campos obrigatórios!");
             return;
-        } 
+        }
         
         Dao<Usuario> dao = new Dao(Usuario.class);
-        Usuario user = new Usuario(campoLogin.getText(),campoNome.getText(), campoSenha.getText());
-        dao.alterar("campoNome", listar.getValue(),user);
-        limparCampos();
-        mostrarSucesso("Usuario alterado com sucesso!");
+        dao.excluir("campoNome", listar.getValue());
+        mostrarSucesso("Usuário excluído com sucesso!");
+        listar.setValue(null);
     }
-    
-    public void voltar() throws IOException{
+
+    public void voltar() throws IOException {
         App.setRoot("menu");
     }
-    
-    private void mostrarErro(String mensagem){
+
+    private void mostrarErro(String mensagem) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
         alert.show();
     }
 
-    private void mostrarSucesso(String mensagem){
+    private void mostrarSucesso(String mensagem) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setContentText(mensagem);
         alert.show();
     }
 
-    private void limparCampos(){
+    private void limparCampos() {
         this.campoLogin.setText("");
         this.campoNome.setText("");
         this.campoSenha.setText("");
-       
+
     }
 }
