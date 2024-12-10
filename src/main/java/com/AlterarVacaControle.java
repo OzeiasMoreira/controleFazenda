@@ -4,10 +4,13 @@
  */
 package com;
 
+import com.controlefazenda.modelo.Usuario;
 import com.controlefazenda.modelo.Vaca;
 import com.controlefazenda.util.Dao;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -28,16 +31,16 @@ public class AlterarVacaControle {
     private TextField campoRaca;
     
     @FXML
-    private ComboBox<String> listar;
+    private ComboBox<Vaca> listar;
     
+    @FXML
     private void initialize(){
-        Dao<Vaca> dao = new Dao(Vaca.class);
-        ArrayList<String> listaT = new ArrayList<>();
-        for (Vaca v : dao.listarTodos()){
-            listaT.add(v.getBrinco());
-        }
+        Dao<Vaca> dao = new Dao<>(Vaca.class);
+        List<Vaca> listaT = new ArrayList<>();
+        listaT = dao.listarTodos();
+        listar.setItems(FXCollections.observableArrayList(listaT));
         
-        listar.getItems().setAll(listaT);
+        
     }
     
         public void alterar(){
@@ -48,7 +51,7 @@ public class AlterarVacaControle {
         
         Dao<Vaca> dao = new Dao(Vaca.class);
         Vaca v = new Vaca(campoNome.getText(),campoBrinco.getText(), campoRaca.getText());
-        dao.alterar("campoBrinco", listar.getValue(),v);
+        dao.alterar("brinco", listar.getValue().getBrinco(),v);
         limparCampos();
         mostrarSucesso("Vaca alterada com sucesso!");
     }

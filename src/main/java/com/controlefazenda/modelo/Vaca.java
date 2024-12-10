@@ -8,27 +8,28 @@ package com.controlefazenda.modelo;
  *
  * @author Ozeias
  */
-
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
-public class Vaca  {
-    @BsonProperty(value="brinco") 
-    private String brinco;
-    
-    @BsonProperty(value="nome")
-    private String nome;
-    
-    @BsonProperty(value="raca")
-    private String raca; 
+public class Vaca {
 
-    public Vaca(){}
-    
-    public Vaca(String brinco, String nome, String raca){
-        this.brinco = brinco; 
+    @BsonProperty(value = "brinco")
+    private String brinco;
+
+    @BsonProperty(value = "nome")
+    private String nome;
+
+    @BsonProperty(value = "raca")
+    private String raca;
+
+    public Vaca() {
+    }
+
+    public Vaca(String brinco, String nome, String raca) {
+        this.brinco = brinco;
         this.nome = nome;
         this.raca = raca;
     }
-    
+
     public String getNome() {
         return nome;
     }
@@ -53,6 +54,9 @@ public class Vaca  {
         this.brinco = brinco;
     }
 
-    
-}
+    @Override
+    public String toString() {
+        return this.nome;
+    }
 
+}

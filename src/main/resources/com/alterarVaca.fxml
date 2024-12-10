@@ -7,7 +7,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.AlterarVacaControle">
    <children>
       <TextField fx:id="campoBrinco" layoutX="235.0" layoutY="153.0" promptText="brinco*" />
@@ -20,6 +19,6 @@
       </Text>
       <Button layoutX="240.0" layoutY="331.0" mnemonicParsing="false" onAction="#voltar" text="Cancelar" />
       <Button layoutX="328.0" layoutY="331.0" mnemonicParsing="false" onAction="#alterar" text="Alterar" />
-      <ComboBox fx:id="listar" layoutX="234.0" layoutY="97.0" onAction="#initialize" prefWidth="150.0" />
+      <ComboBox fx:id="listar" layoutX="234.0" layoutY="97.0" prefWidth="150.0" />
    </children>
 </Pane>

@@ -8,6 +8,8 @@ import com.controlefazenda.modelo.Usuario;
 import com.controlefazenda.util.Dao;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -30,17 +32,14 @@ public class ExcluirUserControlador {
     private PasswordField campoSenha;
 
     @FXML
-    private ComboBox<String> listar;
+    private ComboBox<Usuario> listar;
 
     @FXML
     private void initialize() {
         Dao<Usuario> dao = new Dao<Usuario>(Usuario.class);
-        ArrayList<String> listaT = new ArrayList<>();
-        for (Usuario user : dao.listarTodos()) {
-            listaT.add(user.getNome());
-        }
-
-        listar.getItems().setAll(listaT);
+        List<Usuario> listaT = new ArrayList<>();
+        listaT = dao.listarTodos();
+        listar.setItems(FXCollections.observableArrayList(listaT));
     }
 
     @FXML
@@ -51,7 +50,7 @@ public class ExcluirUserControlador {
         }
         
         Dao<Usuario> dao = new Dao(Usuario.class);
-        dao.excluir("campoNome", listar.getValue());
+        dao.excluir("login", listar.getValue().getLogin());
         mostrarSucesso("Usuário excluído com sucesso!");
         listar.setValue(null);
     }

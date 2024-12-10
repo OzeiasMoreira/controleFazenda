@@ -8,6 +8,8 @@ import com.controlefazenda.modelo.Usuario;
 import com.controlefazenda.util.Dao;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -30,28 +32,26 @@ public class AlterarUserControle {
     PasswordField campoSenha;
     
     @FXML
-    private ComboBox<String> listar;
+    private ComboBox<Usuario> listar;
     
     @FXML
     private void initialize(){
-        Dao<Usuario> dao = new Dao<Usuario>(Usuario.class);
-        ArrayList<String> listaT = new ArrayList<>();
-        for(Usuario user : dao.listarTodos()){
-            listaT.add(user.getNome());
-        }
+        Dao<Usuario> dao = new Dao<>(Usuario.class);
+        List<Usuario> listaT = new ArrayList<>();
+        listaT = dao.listarTodos();
+        listar.setItems(FXCollections.observableArrayList(listaT));
         
-        listar.getItems().setAll(listaT);
     }
     
     public void alterar(){
-        if(campoLogin.getText().isEmpty() || campoSenha.getText().isEmpty() || listar.getValue() == null){
+        if(campoSenha.getText().isEmpty() || listar.getValue() == null){
             mostrarErro("Preencha os campos obrigatórios");
             return;
         } 
         
         Dao<Usuario> dao = new Dao(Usuario.class);
         Usuario user = new Usuario(campoLogin.getText(),campoNome.getText(), campoSenha.getText());
-        dao.alterar("campoNome", listar.getValue(),user);
+        dao.alterar("login", listar.getValue().getLogin(),user);
         limparCampos();
         mostrarSucesso("Usuario alterado com sucesso!");
     }

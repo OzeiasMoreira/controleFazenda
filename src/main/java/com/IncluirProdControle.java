@@ -9,6 +9,7 @@ import com.controlefazenda.modelo.Vaca;
 import com.controlefazenda.util.Dao;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,7 +30,7 @@ public class IncluirProdControle {
     private TextField data;
 
     @FXML
-    private ComboBox<String> listar;
+    private ComboBox<Vaca> listar;
 
     @FXML
     private TextField litros;
@@ -37,12 +38,9 @@ public class IncluirProdControle {
     @FXML
     private void initialize() {
         Dao<Vaca> dao = new Dao(Vaca.class);
-        ArrayList<String> listaT = new ArrayList<>();
-        for (Vaca v : dao.listarTodos()) {
-            listaT.add(v.getBrinco());
-        }
-
-        listar.getItems().setAll(listaT);
+        List<Vaca> listaT = new ArrayList<>();
+        listaT = dao.listarTodos();
+        listar.setItems(FXCollections.observableArrayList(listaT));
     }
 
     @FXML
@@ -53,7 +51,7 @@ public class IncluirProdControle {
         }
         
         Dao<Vaca> dao = new Dao(Vaca.class);
-        Vaca v = dao.buscarPorChave("brinco", listar.getValue());
+        Vaca v = dao.buscarPorChave("brinco", listar.getValue().getBrinco());
         
         Producao producao = new Producao(v.getBrinco(), data.getText(),  Double.valueOf(litros.getText()));
         Dao<Producao> daop = new Dao(Producao.class);

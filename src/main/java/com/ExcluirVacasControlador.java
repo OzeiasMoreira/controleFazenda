@@ -9,6 +9,8 @@ import com.controlefazenda.modelo.Vaca;
 import com.controlefazenda.util.Dao;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -31,17 +33,14 @@ public class ExcluirVacasControlador {
     private TextField campoRaca;
 
     @FXML
-    private ComboBox<String> listar;
+    private ComboBox<Vaca> listar;
 
     @FXML
     private void initialize() {
         Dao<Vaca> dao = new Dao<Vaca>(Vaca.class);
-        ArrayList<String> listaT = new ArrayList<>();
-        for (Vaca v : dao.listarTodos()) {
-            listaT.add(v.getNome());
-        }
-
-        listar.getItems().setAll(listaT);
+        List<Vaca> listaT = new ArrayList<>();
+        listaT = dao.listarTodos();
+        listar.setItems(FXCollections.observableArrayList(listaT));
     }
 
     @FXML
@@ -52,7 +51,7 @@ public class ExcluirVacasControlador {
         }
 
         Dao<Usuario> dao = new Dao(Vaca.class);
-        dao.excluir("campoBrinco", listar.getValue());
+        dao.excluir("campoBrinco", listar.getValue().getBrinco());
         mostrarSucesso("Vaca excluída com sucesso!");
         listar.setValue(null);
     }
@@ -67,7 +66,7 @@ public class ExcluirVacasControlador {
         alert.setContentText(mensagem);
         alert.show();
     }
-
+    
     private void mostrarSucesso(String mensagem) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
