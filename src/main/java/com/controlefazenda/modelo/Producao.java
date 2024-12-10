@@ -12,8 +12,8 @@ import org.bson.codecs.pojo.annotations.BsonProperty;
  */
 public class Producao {
     
-    @BsonProperty(value="brinco")
-    private String brinco;
+    @BsonProperty(value="vaca")
+    private String vaca;
 
     @BsonProperty(value="data")
     private String data;
@@ -23,18 +23,18 @@ public class Producao {
     
     public Producao(){}
 
-    public Producao(String brinco, String data, Double quantidade) {
-        this.brinco = brinco;
+    public Producao(String vaca, String data, Double quantidade) {
+        this.vaca = vaca;
         this.data = data;
         this.quantidade = quantidade;
     }
 
-    public String getBrinco() {
-        return brinco;
+    public String getVaca() {
+        return vaca;
     }
 
-    public void setBrinco(String brinco) {
-        this.brinco = brinco;
+    public void setVaca(String vaca) {
+        this.vaca = vaca;
     }
 
     public String getData() {

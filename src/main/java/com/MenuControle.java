@@ -53,5 +53,10 @@ public class MenuControle {
     private void excluirVaca() throws IOException {
         App.setRoot("excluirVaca");
     }
+    
+    @FXML
+    private void incluirProd() throws IOException{
+        App.setRoot("incluirProd");
+    }
 
 }

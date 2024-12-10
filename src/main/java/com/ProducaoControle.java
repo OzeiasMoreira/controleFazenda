@@ -39,8 +39,8 @@ public class ProducaoControle {
             mostrarErro("Preencha os campos obrigatorios.");
         }
 
-        Producao prod = new Producao(campoBrinco.getText(), campoData.getText(), campoQuantidade.getHeight());
-        dao.inserir(prod);
+        Producao p = new Producao(campoBrinco.getText(), campoData.getText(), campoQuantidade.getHeight());
+        dao.inserir(p);
         limparCampos();
         mostrarSucesso("Produção registrada!");
 

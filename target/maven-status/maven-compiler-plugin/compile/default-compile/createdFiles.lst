@@ -5,6 +5,7 @@ com\App.class
 com\controlefazenda\modelo\Producao.class
 com\ExcluirVacasControlador.class
 com\ProducaoControle.class
+com\IncluirProdControle.class
 com\ExcluirUserControlador.class
 com\UsuarioControle.class
 com\AlterarVacaControle.class

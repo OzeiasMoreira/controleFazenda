@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "com.App",
+            "projectName": "demo"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -16,8 +23,7 @@
             "request": "launch",
             "mainClass": "com.controlefazenda.App",
             "projectName": "demo",
-            "vmArgs":  "C:/Program Files/Java/javafx-sdk-22.0.2/lib"
-
+            "vmArgs": "C:/Program Files/Java/javafx-sdk-22.0.2/lib"
         }
     ]
 }

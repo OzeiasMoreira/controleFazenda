@@ -32,7 +32,7 @@
       <Button layoutX="189.0" layoutY="187.0" mnemonicParsing="false" onAction="#usuario" text="Cadastar" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" />
       <Button layoutX="302.0" layoutY="190.0" mnemonicParsing="false" onAction="#alterarUser" prefHeight="25.0" prefWidth="62.0" text="Alterar" />
       <Button layoutX="406.0" layoutY="190.0" mnemonicParsing="false" onAction="#excluirUser" prefHeight="25.0" prefWidth="62.0" text="Excluir" />
-      <Button layoutX="189.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="62.0" text="Incluir" />
+      <Button layoutX="189.0" layoutY="331.0" mnemonicParsing="false" onAction="#incluirProd" prefHeight="25.0" prefWidth="62.0" text="Incluir" />
       <Button layoutX="285.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="108.0" text="Listar - Período" />
       <Button layoutX="430.0" layoutY="331.0" mnemonicParsing="false" text="Listar - Vaca" />
    </children>
